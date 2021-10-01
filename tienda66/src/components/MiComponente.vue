@@ -57,24 +57,7 @@ export default {
             cliente: { nombre: 'Natacha', apellido: 'Libreros' },
             cantidad: 0,
             // arreglo:
-            productos: [
-                // objetos:
-                {
-                    id: 1,
-                    nombre:'camiseta',
-                    precio: 25000
-                },
-                {
-                    id: 2,
-                    nombre:'vestido',
-                    precio: 150000
-                },
-                {
-                    id: 3,
-                    nombre:'pantalón',
-                    precio: 120000
-                }
-            ],
+            productos: [],
             alimentos: [
                {
                    id: 1,
@@ -134,7 +117,33 @@ export default {
                 alert(mensaje)
             })
         }
+    }, 
+    created () {
+        this.productos = [
+            // objetos:
+                {
+                    id: 1,
+                    nombre:'camiseta',
+                    precio: 25000
+                },
+                {
+                    id: 2,
+                    nombre:'vestido',
+                    precio: 150000
+                },
+                {
+                    id: 3,
+                    nombre:'pantalón',
+                    precio: 120000
+                }
+        ]
+        console.log('Ejecuta created')
+    },
+    mounted () {
+        console.log('Ejecuta mounted')
+        //this.enviarCliente()
     }
+
 }
 </script>
 <style scoped>

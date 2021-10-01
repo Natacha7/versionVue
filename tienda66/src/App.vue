@@ -1,7 +1,13 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
+  <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
   <!--<HelloWorld msg="Bienvenidos a VUE"/>-->
   <MiComponente/>
+<!--   <router-view>
+    <div id="nav">
+      <router-link to="/">Inicio</router-link>
+      <router-link :to="{name: 'PaginaPrueba'}"> Página Prueba</router-link>
+    </div>
+  </router-view> -->
 </template>
 
 <script>
