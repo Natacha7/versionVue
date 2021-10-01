@@ -3,8 +3,13 @@
         <h1>Bienvenido {{ cliente.nombre }}</h1>
         <div class="container">
             <div class="row">
-                <input type="text" v-model="cliente.nombre">
-                <input type="number" v-model="cantidad">
+                <div>
+                    <input type="text" v-model="cliente.nombre">
+                    <button type="button" @click="enviarCliente()">Enviar cliente</button>
+                </div>
+                <div>
+                    <input type="number" v-model="cantidad">
+                </div>
             </div>
             <div class="row">
                 <h3 v-if="cantidad > 0">Número mayor a cero</h3>
@@ -45,6 +50,7 @@
     </div>
 </template>
 <script>
+import axios from 'axios'
 export default {
     data() {
         return {
@@ -107,6 +113,27 @@ export default {
             var images = require.context('@/assets/comida/', false, /\.jpg$|\.png$/)
             return images('./' + nombre_archivo)
         },
+        enviarCliente () {
+            //Petición completa:
+            axios.post('https://reqbin.com/echo/post/json',
+            {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            },
+            {
+                //información que voy a enviar
+                data: this.cliente
+            })
+            //promesa
+            .then(response => {
+                let status_peticion = response.status
+                console.log(status_peticion)
+                let mensaje = response.data
+                // this.productos = response.data
+                alert(mensaje)
+            })
+        }
     }
 }
 </script>
