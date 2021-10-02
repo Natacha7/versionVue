@@ -142,6 +142,15 @@ export default {
     mounted () {
         console.log('Ejecuta mounted')
         //this.enviarCliente()
+    },
+    watch: {
+        cantidad (newVal, oldVal) {
+            console.log(oldVal)
+            console.log(newVal)
+            if (newVal == 5) {
+                alert('Es cinco!')
+            }
+        }
     }
 
 }
