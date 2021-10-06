@@ -30,7 +30,7 @@
     </div>
 </template>
 <script>
-
+import axios from 'axios'
 export default {
     data () {
         return {
@@ -40,7 +40,9 @@ export default {
         }
     },
     created () {
-        this.productos = [
+        this.cargarProductos();
+        /*
+        this.productos =  [
                {
                    id: 1,
                    nombre: 'Camiseta',
@@ -76,7 +78,7 @@ export default {
                    imagen: 'camisa.jpg',
                    descripcion: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae, quidem neque. Eius blanditiis similique dolorem?'
                }
-           ]
+           ] */
     },
     methods: {
         getPictureProducto (nombre_archivo) {
@@ -93,6 +95,15 @@ export default {
                 'Se ha agregado ' + producto.nombre + ' al carrito de compras',
                 'success'
             )
+        },
+        cargarProductos(){
+            axios.get('http://localhost:3000/api/productos')
+             //promesa
+            .then(response => {
+                let status_peticion = response.status
+                console.log(status_peticion)
+                this.productos = response.data
+            })
         }
     }
 }
