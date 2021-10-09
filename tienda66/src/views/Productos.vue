@@ -90,7 +90,7 @@ export default {
             this.carrito.push(producto)
             console.log(this.carrito)
             this.total_carrito = this.total_carrito + producto.precio
-            Swal.fire(
+            this.$swal.fire(
                 'Producto agregado',
                 'Se ha agregado ' + producto.nombre + ' al carrito de compras',
                 'success'
