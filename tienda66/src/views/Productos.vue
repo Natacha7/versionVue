@@ -16,6 +16,9 @@
                     <div class="descripcion-producto">
                         <p>{{producto.descripcion}}</p>
                     </div>
+                    <div class="div-cantidad">
+                        <input class="input-cantidad" id="camisa_cantidad" type="number" value="0" min="0">
+                    </div>
                     <div id="icono" class="div-icono">
                         <i class="las la-cart-arrow-down estilo-icono" @click="agregarAlCarrito(producto)"></i>
                         <p><b>Agregar al carrito</b></p>
@@ -23,9 +26,13 @@
                 </div>
             </div>
         </div>
-        <div class="tarjeta-total">
-            <h1>TOTAL</h1>
+        <div id=div_total class="tarjeta-total">
+            <h1><b>TOTAL</b></h1>
             <h2 id="total_carrito">${{total_carrito}}</h2>
+            <div id="icono" class="div-icono">
+                <i class="las la-cart-arrow-down estilo-icono" @click="irCarrito()"></i>
+                <p><b>Ir al carrito</b></p>
+            </div>
         </div>
     </div>
 </template>
@@ -95,6 +102,10 @@ export default {
                 'Se ha agregado ' + producto.nombre + ' al carrito de compras',
                 'success'
             )
+        },
+        irCarrito () {
+            let ruta = '/carrito/${this.total_carrito}'
+            this.$router.push(ruta)
         },
         cargarProductos(){
             axios.get('http://localhost:3000/api/productos')
